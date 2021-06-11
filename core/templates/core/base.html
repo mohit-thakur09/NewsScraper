@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'core/images/free-vector-globe-logo-concept.jpg' %}">
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <title>NewsScraper</title>
+    <style>
+        .ulljulul {
+            padding-top: 40%;
+        }
+
+        .ulljulul a {
+            margin: 10px;
+        }
+
+        .page-footer {
+            background-color: #f3f3f2;
+            padding-top: 50px;
+            padding-bottom: 10px
+        }
+
+        .page-footer h4 {
+            color: #333;
+            font-size: 11px;
+            font-weight: 700
+        }
+
+        .page-footer p {
+            text-align: center;
+            color: #888;
+            font-size: 11px
+        }
+
+        .page-footer .footer-links {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 45px;
+            word-break: break-all
+        }
+
+        .page-footer .footer-links a,
+        .page-footer .region a {
+            color: #555;
+            font-size: 11px
+        }
+
+        .page-footer .footer-links li {
+            margin-bottom: 5px;
+            line-height: 1.3
+        }
+
+        .page-footer .footer-legal .copyright {
+            margin-right: 60px
+        }
+
+        .page-footer .footer-legal .legal-links .item {
+            padding-right: 13px;
+            border-right: 1px solid #ccc;
+            margin: 0 13px 0 0
+        }
+
+        .page-footer .footer-legal .legal-links .item:last-child {
+            border-right: none
+        }
+
+        .page-footer .footer-legal .legal-links .item h5 {
+            font-size: 11px;
+            margin-top: 0;
+            margin-bottom: 0
+        }
+
+        .page-footer .region {
+            margin-bottom: 20px
+        }
+
+        .page-footer .region img {
+            margin-right: 7px
+        }
+
+        @media (min-width:768px) {
+            .page-footer .region {
+                margin-bottom: 0
+            }
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    {% block navbar %}
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'core:landing' %}">
+                <img src="{% static 'core/images/latestlogo.jpg' %}" alt="" width="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item fs-3 fw-bold">
+                    </li>
+                </ul>
+                <div class="d-flex fs-5 fw-bold">
+                    <a class="nav-link" href="{% url 'core:home' %}">Home</a>
+                    <a class="nav-link" href="{% url 'core:hackernews' %}">Hacker News</a>
+                    <a class="nav-link" href="{% url 'core:yourstory' %}">Your Story</a>
+                    <a class="nav-link" href="{% url 'core:about' %}">About</a>
+                    {% if user.is_authenticated %}
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Settings
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                          <li><a class="dropdown-item" href="{% url 'core:logout' %}">Logout</a></li>
+                          <li><a class="dropdown-item" href="{% url 'core:changepassword' %}">Change Password</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% endblock navbar %}
+    {% block content %}
+
+    {% endblock content %}
+
+    {% block footer %}
+    <footer class="page-footer">
+        <div class="container">
+            {# <div class="row">#}
+                {# <div class="col-6 col-md-3">#}
+                    {# <h4>Shop and Learn</h4>#}
+                    {# <ul class="footer-links">#}
+                        {# <li><a href="#">Makbuk</a></li>#}
+                        {# <li><a href="#">iFhone</a></li>#}
+                        {# <li><a href="#">iFad</a></li>#}
+                        {# <li><a href="#">iBaatch</a></li>#}
+                        {# <li><a href="#">iMusik</a></li>#}
+                        {# <li></li>#}
+                        {# </ul>#}
+                    {# </div>#}
+                {# <div class="col-6 col-md-3">#}
+                    {# <h4>DoubleApple Nearest Shop</h4>#}
+                    {# <div>#}
+                        {# <p>#}
+                            <span>Shaitan Gali, Khatra Mehal,Andher Nagar,
+                                Samshan ke samne.</span>
+                            
+                        </p>
+                        {# </div>#}
+                    {# </div>#}
+                {# <div class="col-6 col-md-3">#}
+                    {# <h4>For Education</h4>#}
+                    {# <ul class="footer-links">#}
+                        {# <li><a href="#">Shop for Education</a></li>#}
+                        {# <li><a href="#">Shop for University</a></li>#}
+                        {# </ul>#}
+                    {# <h4>For Business</h4>#}
+                    {# <ul class="footer-links">#}
+                        {# <li><a href="#">DoubleApple and Business</a></li>#}
+                        {# <li></li>#}
+                        {# </ul>#}
+                    {# </div>#}
+                {# <div class="col-6 col-md-3">#}
+                    {# <h4>Account</h4>#}
+                    {# <ul class="footer-links">#}
+                        {# <li><a href="#">Manage Your Double Apple Id</a></li>#}
+                        {# <li><a href="#">iKloud.com</a></li>#}
+                        {# </ul>#}
+                    {# <h4>About DoubleApple</h4>#}
+                    {# <ul class="footer-links">#}
+                        {# <li><a href="#">Newsroom</a></li>#}
+                        {# <li><a href="">Contact DoubleApple</a></li>#}
+                        {# </ul>#}
+                    {# </div>#}
+                {# </div>#}
+            <p>All the designing are made by taking apple website as a reference.Made by <em>Our Team</em>.</p>
+            <hr>
+            <div class="footer-legal">
+                <div class="float-md-right region">
+                    <a href="#">India</a>
+                </div>
+                <div class="d-inline-block copyright">
+                    <p class="d-inline-block">Copyright © 2021.<br></p>
+                </div>
+                <div class="d-inline-block legal-links">
+                    <div class="d-inline-block item">
+                        <h5>Privacy Policy</h5>
+                    </div>
+                    <div class="d-inline-block item">
+                        <h5>Terms of Use</h5>
+                    </div>
+                    <div class="d-inline-block item">
+                        <h5>Legal</h5>
+                    </div>
+                    <div class="d-inline-block item">
+                        <h5>License</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {% endblock footer %}
+
+
+    <script src="{% static 'core/js/jquery.js' %}"></script>
+    <script src="{% static 'core/js/popper.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+
+
+</body>
+
+</html>

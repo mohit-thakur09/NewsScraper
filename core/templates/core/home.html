@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block content %}
+{% if messages %}
+
+{% for message in messages %}
+
+<p {% if message.tags %} class="lert-dismissible fade show m-2 alert alert-{{message.tags}}" {% endif %}>
+    {{message}}
+    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+</p>
+
+
+{% endfor %}
+
+{% endif %}
+
+
+<header>
+    <div class="ps-4">
+        <div class="fs-1 mt-4">Looking for news headlines??</div>
+        <div class="fs-3 text-muted">There you go....</div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col uljulul">
+            <div class="">
+                <img src="{% static 'core/images/news1.jpg' %}" alt="image" class="img-fluid" width="550">
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2 ulljulul">
+                <a href="{% url 'core:hackernews' %}" class="btn btn-primary bg-gradient btn-lg fw-bold" tabindex="-1"
+                    role="button" aria-disabled="true">HackerNews</a>
+                <a href="{% url 'core:yourstory' %}" class="btn btn-primary bg-gradient btn-lg fw-bold" tabindex="-1"
+                    role="button" aria-disabled="true">Yourstory</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

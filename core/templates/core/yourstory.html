@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <header class="mt-4">
+        <div class="alert bg-warning bg-gradient text-dark text-center" role="alert">
+            <p class="alert-heading fs-1 fw-bold">Your story</p>
+            <div class="fw-bold">{{date|date:'d M Y'}}</div>
+            <hr>
+            <p class="mb-0 fw-bold">In a nutshell...</p>
+        </div>
+    </header>
+    <div class="">
+        <ul class="list-group list-group-flush"></ul>
+        {% for link in links %}
+
+        <li class="list-group-item fs-4 fw-bold">
+            <div class="p-2">{{link}}</div>
+        </li>
+
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}
+

@@ -1,0 +1,75 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+<p class="fs-1 fw-bold text-primary">About us</p>
+
+<p>
+    This web application provides you with the latest news headlines of hackernews.com and yourstory.com with
+    preciseness.
+    Every headline present here is efficient and up-to-date as per the parent websites.
+    The technology used in this web application is Django (python web framework) with beautiful Soup (python pakage) used
+    for scraping.
+    Purpose -
+    This application purposely made to save the precious time of an individual as it serves the header of the news and
+    keep you up-to-date in a very short time.
+</p>
+<p class="fs-4 fw-bold">HackerNews</p>
+<p>
+    Hacker News is a social news website focusing on computer science and
+    entrepreneurship. It is run by Paul Graham's investment fund and startup incubator, Y Combinator. In general, content that can be
+    submitted is defined as "anything that gratifies one's intellectual curiosity.
+</p>
+<p class="fs-4 fw-bold">YourStory</p>
+<p>
+    The YourStory Team brings you stories of entrepreneurs and change-makers, funding analyses, resource pieces and the first glimpse of emerging trends from India's entrepreneurial ecosystem, as well as profiles of great businesses and entrepreneurs from all over the world.
+</p>
+</div>
+
+<div class="container">
+
+    <div class="border border-secondary border-2 p-4">
+        <p class="fs-2 fst-italic text-warning">
+            Give your valueable feedback here
+        </p>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            {{form.as_p}}
+
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+        {% if messages %}
+
+        {% for message in messages %}
+
+        <p {% if message.tags %} class="lert-dismissible fade show m-2 alert alert-{{message.tags}}" {% endif %}>
+            {{message}}
+            <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+        </p>
+        
+
+        {% endfor %}
+
+        {% endif %}
+    </div>
+
+    <div class="">
+        <div class="fs-4 fw-bold my-3 text-center">Reviews</div>
+            {% for latest in latest_feedback %}
+                <div class="my-3 d-flex justify-content-center" type="none">
+                    <div class="card alert alert-dark fw-bold w-75">
+                        <div class="card-body">
+                          <p class="card-text">{{latest}}</p>
+                        </div>
+                      </div>
+                    </div>
+            {% endfor %}
+      
+    </div>
+</div>
+
+{% endblock content %}

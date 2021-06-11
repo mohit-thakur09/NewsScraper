@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+<div class="container d-flex justify-content-center">
+
+    <div class="w-50 mt-5">
+        <p class="fs-1 fw-bold">Login</p>
+
+        <form action="" method="POST" novalidate class="d-inline">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p class="error">{{error}}</p>
+            {% endfor %}
+            {% endif %}
+
+            {% for field in form %}
+
+            <p>
+                {{field.label_tag}} {{field}} <span class="error"> {{field.errors|striptags}} </span>
+            </p>
+
+            {% endfor %}
+            <input type="submit" value="Login" class="btn btn-primary">
+
+        </form>
+        <a href="{% url 'core:signup' %}" class="btn btn-primary m-1">Signup</a>
+
+        {% if messages %}
+
+        {% for message in messages %}
+
+        <p {% if message.tags %} class="lert-dismissible fade show m-2 alert alert-{{message.tags}}" {% endif %}>
+            {{message}}
+            <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+        </p>
+
+        {% endfor %}
+
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block footer %}
+
+{% endblock footer %}

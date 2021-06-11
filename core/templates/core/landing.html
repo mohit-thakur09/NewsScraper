@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<p class="fs-3 text-center fw-bold">News Scraper</p>
+
+<div class="container d-flex justify-content-center">
+
+    <div class="card" style="width: 30rem;">
+        <img src="{% static 'core/images/mainimage.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text fs-4 fw-bold">Login/Sign-Up here..</p>
+            <a href="{% url 'core:signup' %}" class="btn btn-primary m-1">Signup</a>
+
+            <a href="{% url 'core:login' %}" class="btn btn-primary m-1">Login</a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block footer %}
+
+{% endblock footer %}
